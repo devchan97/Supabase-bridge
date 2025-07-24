@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace {{NAMESPACE}}
+{
+    /// <summary>
+    /// Service for handling Supabase authentication.
+    /// Generated on: {{GENERATION_DATE}}
+    /// </summary>
+    public class SupabaseAuthService
+    {
+        private readonly SupabaseClient client;
+        private User currentUser;
+        
+        /// <summary>
+        /// Event that is triggered when the authentication state changes.
+        /// </summary>
+        public event Action<User> OnAuthStateChanged;
+        
+        /// <summary>
+        /// Gets a value indicating whether the user is authenticated.
+        /// </summary>
+        public bool IsAuthenticated => currentUser != null;
+        
+        /// <summary>
+        /// Gets the current user.
+        /// </summary>
+        public User CurrentUser => currentUser;
+        
+        /// <summary>
+        /// Initializes a new instance of the SupabaseAuthService class.
+        /// </summary>
+        /// <param name="client">The Supabase client</param>
+        public SupabaseAuthService(SupabaseClient client)
+        {
+            this.client = client;
+        }
+        
+        // Add authentication methods here
+    }
+    
+    /// <summary>
+    /// Represents a Supabase user.
+    /// </summary>
+    [Serializable]
+    public class User
+    {
+        /// <summary>
+        /// Gets or sets the user ID.
+        /// </summary>
+        public string Id { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the user email.
+        /// </summary>
+        public string Email { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the access token.
+        /// </summary>
+        public string AccessToken { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the refresh token.
+        /// </summary>
+        public string RefreshToken { get; set; }
+    }
+}

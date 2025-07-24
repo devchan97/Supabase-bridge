@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace {{NAMESPACE}}
+{
+    /// <summary>
+    /// Client for interacting with the Supabase API.
+    /// Generated on: {{GENERATION_DATE}}
+    /// Profile: {{PROFILE_NAME}}
+    /// </summary>
+    public class SupabaseClient
+    {
+        private readonly HttpClient httpClient;
+        private readonly string baseUrl;
+        private readonly string apiKey;
+        private string accessToken;
+        
+        /// <summary>
+        /// Initializes a new instance of the SupabaseClient class.
+        /// </summary>
+        public SupabaseClient()
+        {
+            this.baseUrl = "{{SUPABASE_URL}}";
+            this.apiKey = "{{SUPABASE_KEY}}";
+            this.httpClient = new HttpClient();
+            this.httpClient.DefaultRequestHeaders.Add("apikey", apiKey);
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the SupabaseClient class with custom URL and key.
+        /// </summary>
+        /// <param name="url">The Supabase project URL</param>
+        /// <param name="key">The Supabase API key</param>
+        public SupabaseClient(string url, string key)
+        {
+            this.baseUrl = url;
+            this.apiKey = key;
+            this.httpClient = new HttpClient();
+            this.httpClient.DefaultRequestHeaders.Add("apikey", apiKey);
+        }
+        
+        /// <summary>
+        /// Sets the access token for authenticated requests.
+        /// </summary>
+        /// <param name="token">The access token</param>
+        public void SetAccessToken(string token)
+        {
+            this.accessToken = token;
+            
+            // Update the Authorization header
+            if (this.httpClient.DefaultRequestHeaders.Contains("Authorization"))
+            {
+                this.httpClient.DefaultRequestHeaders.Remove("Authorization");
+            }
+            
+            if (!string.IsNullOrEmpty(token))
+            {
+                this.httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            }
+        }
+        
+        /// <summary>
+        /// Gets the base URL of the Supabase project.
+        /// </summary>
+        /// <returns>The base URL</returns>
+        public string GetBaseUrl()
+        {
+            return this.baseUrl;
+        }
+        
+        // Add more methods for API interaction here
+    }
+}

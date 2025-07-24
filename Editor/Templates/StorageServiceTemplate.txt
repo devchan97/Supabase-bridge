@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace {{NAMESPACE}}
+{
+    /// <summary>
+    /// Service for interacting with Supabase storage.
+    /// Generated on: {{GENERATION_DATE}}
+    /// </summary>
+    public class SupabaseStorageService
+    {
+        private readonly SupabaseClient client;
+        private const string STORAGE_ENDPOINT = "/storage/v1";
+        private const string BUCKETS_ENDPOINT = "/storage/v1/bucket";
+        private const string OBJECTS_ENDPOINT = "/storage/v1/object";
+        
+        /// <summary>
+        /// Initializes a new instance of the SupabaseStorageService class.
+        /// </summary>
+        /// <param name="client">The Supabase client</param>
+        public SupabaseStorageService(SupabaseClient client)
+        {
+            this.client = client;
+        }
+        
+        // Add storage methods here
+    }
+    
+    /// <summary>
+    /// Represents information about a storage bucket.
+    /// </summary>
+    [Serializable]
+    public class BucketInfo
+    {
+        /// <summary>
+        /// Gets or sets the name of the bucket.
+        /// </summary>
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// Gets or sets a value indicating whether the bucket is public.
+        /// </summary>
+        public bool IsPublic { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the creation date of the bucket.
+        /// </summary>
+        public DateTime CreatedAt { get; set; }
+    }
+    
+    /// <summary>
+    /// Represents information about a file in storage.
+    /// </summary>
+    [Serializable]
+    public class FileObject
+    {
+        /// <summary>
+        /// Gets or sets the name of the file.
+        /// </summary>
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the name of the bucket containing the file.
+        /// </summary>
+        public string BucketName { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the content type of the file.
+        /// </summary>
+        public string ContentType { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the size of the file in bytes.
+        /// </summary>
+        public long Size { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the creation date of the file.
+        /// </summary>
+        public DateTime CreatedAt { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the last update date of the file.
+        /// </summary>
+        public DateTime UpdatedAt { get; set; }
+    }
+}

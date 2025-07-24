@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace {{NAMESPACE}}
+{
+    /// <summary>
+    /// Service for interacting with the Supabase database.
+    /// Generated on: {{GENERATION_DATE}}
+    /// </summary>
+    public class SupabaseDatabaseService
+    {
+        private readonly SupabaseClient client;
+        private const string REST_ENDPOINT = "/rest/v1/";
+        
+        /// <summary>
+        /// Initializes a new instance of the SupabaseDatabaseService class.
+        /// </summary>
+        /// <param name="client">The Supabase client</param>
+        public SupabaseDatabaseService(SupabaseClient client)
+        {
+            this.client = client;
+        }
+        
+        // Add database methods here
+    }
+    
+    /// <summary>
+    /// Represents options for querying a table.
+    /// </summary>
+    public class QueryOptions
+    {
+        /// <summary>
+        /// Gets or sets the columns to select.
+        /// </summary>
+        public List<string> Select { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the filters to apply.
+        /// </summary>
+        public Dictionary<string, string> Filters { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the column to order by.
+        /// </summary>
+        public string OrderBy { get; set; }
+        
+        /// <summary>
+        /// Gets or sets a value indicating whether to order in ascending order.
+        /// </summary>
+        public bool? Ascending { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the maximum number of records to return.
+        /// </summary>
+        public int? Limit { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the number of records to skip.
+        /// </summary>
+        public int? Offset { get; set; }
+    }
+}

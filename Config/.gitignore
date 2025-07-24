@@ -1,0 +1,2 @@
+# Ignore all configuration files that may contain sensitive information
+*.json
